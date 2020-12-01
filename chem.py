@@ -10,14 +10,10 @@ def intersperse(val, sequence):
         first = False
 
 def string_reaction(reac_list, reactants, prod_list, products):
-    lhalf = [f"({reactants[r]}){r}" if
-             not (isinstance(reactants[r], int) or isinstance(reactants[r], float))
-             else f"{reactants[r]}{r}" if reactants[r] != 1 else f"{r}" for r in reac_list]
+    lhalf = [f"({reactants[r]}){r}" if not (isinstance(reactants[r], int) or isinstance(reactants[r], float)) else f"{reactants[r]}{r}" if reactants[r] != 1 else f"{r}" for r in reac_list]
     lhalf = list(intersperse('+', lhalf))
 
-    rhalf = [f"({products[p]}){p}" if
-             not (isinstance(products[p], int) or isinstance(products[p], float))
-             else f"{products[p]}{p}" if products[p] != 1 else f"{p}" for p in prod_list]
+    rhalf = [f"({products[p]}){p}" if not (isinstance(products[p], int) or isinstance(products[p], float)) else f"{products[p]}{p}" if products[p] != 1 else f"{p}" for p in prod_list]
     rhalf = list(intersperse('+', rhalf))
 
     to_print = lhalf + ['->'] + rhalf
