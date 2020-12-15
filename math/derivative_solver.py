@@ -6,9 +6,9 @@ f, g, N = symbols('f g N', cls=Function)
 
 # expr = (x**2 - 4 * x) * exp(-1/(x**2 - 4 * x))
 # pprint(limit(expr/x**2, x, oo))
-# an = log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
-# expr = Sum(n**2 * an, (n,1,oo))
-# pprint(expr.is_convergent())
+# an = cos(n) * sin(1/n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
+# expr = Sum(an, (n,1,oo))
+# pprint(expr.is_absolutely_convergent())
 # expr = x * log(x) * exp(x)
 # pprint(integrate(expr, x))
 
@@ -44,6 +44,6 @@ f, g, N = symbols('f g N', cls=Function)
 # x = 2 * I + 2
 # pprint(nonlinsolve([z**3 - x, Abs(z - I)**2 - 1], [z]))
 
-expr = -atanh(cos(x))
-expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
-pprint(expr2.diff(x))
+expr = (1 - x) * exp(1 / (2 * x + 2))
+# expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
+pprint(simplify(expr.diff(x)))
