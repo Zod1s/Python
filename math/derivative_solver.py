@@ -1,6 +1,6 @@
 from sympy import *
 init_printing(use_unicode=True)
-x, y, z, t, k= symbols('x y z t k')
+x, y, z, t, k= symbols('x y z t k', real=True)
 n = symbols('n', integer=True)
 f, g, N = symbols('f g N', cls=Function)
 
@@ -12,7 +12,25 @@ f, g, N = symbols('f g N', cls=Function)
 # expr = x * log(x) * exp(x)
 # pprint(integrate(expr, x))
 
+# expr = log(abs(exp(2 * x) * (1 - exp(2 - 2 * x)))) - 2 * x
+# pprint(limit(expr, x, oo))
+# an = (-1) ** n * (atan(1 / n)) ** (1 + 1 / n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
+# expr = Sum(an, (n,1,oo))
+# pprint(expr.is_convergent())
+# expr = 1 / (1 + x**2) ** 2 
+# pprint(expr.diff(x))
 # pprint(simplify((x**2 - 4*x -5)/(2*x + 2)))
+
+# expr1 = 1 / abs(sin(x)) - 1 / abs(log(1 + sqrt(abs(x))))
+# expr2 = exp(1 / abs(x)) + log(abs(x)) / x**3
+# expr3 = (exp(sin(x)) - 1 - sin(x)) / ((tan(x))**2 * (sinh(x) - x))
+# expr4 = log(1 + x) / (sin(x) * (1 - cos(x)))
+# pprint(limit(expr1 / expr2, x, 0))
+# pprint(limit(expr1 / expr3, x, 0))
+# pprint(limit(expr1 / expr4, x, 0))
+# expr = x*2**x / 5**x# (2**x - 2**(x*log(x))) / (x**x)
+# pprint(limit(expr, x, oo))
+# pprint(limit(expr4, x, 0))
 
 # expr = f(x).diff(x) + 3 * log(x + 1) * f(x)
 # sol = dsolve(expr, f(x), ics={f(0):1})
@@ -34,7 +52,8 @@ f, g, N = symbols('f g N', cls=Function)
 
 # f = v / sqrt(1 - (v**2 / c**2)) - L/t
 # pprint(f.subs([(L, 4.24e8), (t, 1), (c, 3e8), (v, 0.816327075 * 3e8)]))
-# pprint(solveset(f,v))
+# expr = x**2 + 3 * x - I
+# pprint(solveset(expr, x))
 
 # x = sqrt(8) * (cos(pi/4) + I * sin(pi/4))
 # pprint(solveset(z**3 - x, z))
@@ -44,6 +63,14 @@ f, g, N = symbols('f g N', cls=Function)
 # x = 2 * I + 2
 # pprint(nonlinsolve([z**3 - x, Abs(z - I)**2 - 1], [z]))
 
-expr = (1 - x) * exp(1 / (2 * x + 2))
+expr = (1 - x) * exp(atan(4/x))
 # expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
-pprint(simplify(expr.diff(x)))
+pprint(simplify(expr.diff(x,2)))
+
+# expr = -atanh(cos(x))
+# expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
+# pprint(expr2.diff(x))
+
+# expr = 2 * x**2 + 8 * x + 4
+# expr2 = (x + 2 + sqrt(2)) * (x + 2 - sqrt(2))
+# pprint(expand(expr2))
