@@ -1,8 +1,16 @@
 from sympy import *
 init_printing(use_unicode=True)
-x, y, z, t, k= symbols('x y z t k')
+x, y, z, t, k= symbols('x y z t k', real=True)
 n = symbols('n', integer=True)
 f, g, N = symbols('f g N', cls=Function)
+
+# expr = (x**2 - 4 * x) * exp(-1/(x**2 - 4 * x))
+# pprint(limit(expr/x**2, x, oo))
+# an = cos(n) * sin(1/n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
+# expr = Sum(an, (n,1,oo))
+# pprint(expr.is_absolutely_convergent())
+# expr = x * log(x) * exp(x)
+# pprint(integrate(expr, x))
 
 # expr = log(abs(exp(2 * x) * (1 - exp(2 - 2 * x)))) - 2 * x
 # pprint(limit(expr, x, oo))
@@ -55,6 +63,10 @@ pprint(integrate(expr, (x, 0, 1)))
 # pprint(Abs(x - I)**2)
 # x = 2 * I + 2
 # pprint(nonlinsolve([z**3 - x, Abs(z - I)**2 - 1], [z]))
+
+expr = (1 - x) * exp(atan(4/x))
+# expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
+pprint(simplify(expr.diff(x,2)))
 
 # expr = -atanh(cos(x))
 # expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
