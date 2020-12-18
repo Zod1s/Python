@@ -6,12 +6,13 @@ f, g, N = symbols('f g N', cls=Function)
 
 # expr = log(abs(exp(2 * x) * (1 - exp(2 - 2 * x)))) - 2 * x
 # pprint(limit(expr, x, oo))
-# an = (-1) ** n * (atan(1 / n)) ** (1 + 1 / n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
+# an = n**(1/3) / (sqrt(n**2 + n + 1))
 # expr = Sum(an, (n,1,oo))
 # pprint(expr.is_convergent())
-# expr = 1 / (1 + x**2) ** 2 
-# pprint(expr.diff(x))
-# pprint(simplify((x**2 - 4*x -5)/(2*x + 2)))
+# expr = atan(x)# cos(sqrt(2*x))
+# pprint(simplify(expr.diff(x, 4))) # .subs(x, pi/8).evalf())
+# expr = exp(-x) - cos(sqrt(2 * x))
+# pprint(series(expr, x, 0, 3))
 
 # expr1 = 1 / abs(sin(x)) - 1 / abs(log(1 + sqrt(abs(x))))
 # expr2 = exp(1 / abs(x)) + log(abs(x)) / x**3
@@ -20,8 +21,8 @@ f, g, N = symbols('f g N', cls=Function)
 # pprint(limit(expr1 / expr2, x, 0))
 # pprint(limit(expr1 / expr3, x, 0))
 # pprint(limit(expr1 / expr4, x, 0))
-expr = x*2**x / 5**x# (2**x - 2**(x*log(x))) / (x**x)
-pprint(limit(expr, x, oo))
+# expr = x*2**x / 5**x# (2**x - 2**(x*log(x))) / (x**x)
+# pprint(limit(expr, x, oo))
 # pprint(limit(expr4, x, 0))
 
 # expr = f(x).diff(x) + 3 * log(x + 1) * f(x)
@@ -35,9 +36,9 @@ pprint(limit(expr, x, oo))
 # expr = (x + 1) * exp(-x)
 # pprint(simplify(expr.diff(x,x)))
 
-# expr = acos((cos(x))/(1 + 2*cos(x)))
-# pprint(expr)
-# pprint(integrate(expr, (x,0,pi/2)))
+expr = (x**GoldenRatio - 1) ** 2 / (log(x) ** 2)
+pprint(expr)
+pprint(integrate(expr, (x, 0, 1)))
 
 # f1 = 2 * x * exp(-3 * x**2)
 # pprint(f1.subs(x, 1 / sqrt(3)))
