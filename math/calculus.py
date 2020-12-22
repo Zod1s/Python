@@ -1,6 +1,6 @@
 from sympy import *
 init_printing(use_unicode=True)
-x, y, z, t, k= symbols('x y z t k', real=True)
+x, y, z, t, k = symbols('x y z t k', real=True)
 n = symbols('n', integer=True)
 f, g, N = symbols('f g N', cls=Function)
 
@@ -19,8 +19,8 @@ f, g, N = symbols('f g N', cls=Function)
 # pprint(expr.is_convergent())
 # expr = atan(x)# cos(sqrt(2*x))
 # pprint(simplify(expr.diff(x, 4))) # .subs(x, pi/8).evalf())
-# expr = exp(-x) - cos(sqrt(2 * x))
-# pprint(series(expr, x, 0, 3))
+# expr = log(1 + sin(x))
+# pprint(series(expr, x, 0, 4))
 
 # expr1 = 1 / abs(sin(x)) - 1 / abs(log(1 + sqrt(abs(x))))
 # expr2 = exp(1 / abs(x)) + log(abs(x)) / x**3
@@ -43,11 +43,6 @@ f, g, N = symbols('f g N', cls=Function)
 
 # expr = (x + 1) * exp(-x)
 # pprint(simplify(expr.diff(x,x)))
-
-expr = (x**GoldenRatio - 1) ** 2 / (log(x) ** 2)
-pprint(expr)
-pprint(integrate(expr, (x, 0, 1)))
-
 # f1 = 2 * x * exp(-3 * x**2)
 # pprint(f1.subs(x, 1 / sqrt(3)))
 
@@ -64,14 +59,10 @@ pprint(integrate(expr, (x, 0, 1)))
 # x = 2 * I + 2
 # pprint(nonlinsolve([z**3 - x, Abs(z - I)**2 - 1], [z]))
 
-expr = (1 - x) * exp(atan(4/x))
+# expr = (1 - x) * exp(atan(4/x))
 # expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
-pprint(simplify(expr.diff(x,2)))
+# pprint(simplify(expr.diff(x,2)))
 
-# expr = -atanh(cos(x))
-# expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
-# pprint(expr2.diff(x))
-
-# expr = 2 * x**2 + 8 * x + 4
-# expr2 = (x + 2 + sqrt(2)) * (x + 2 - sqrt(2))
-# pprint(expand(expr2))
+a = 0
+expr = (log(x + 3) - log(x + 1) - sin(2 / x)) / (cos(sin(1 / (2 * x))) - exp(a / x**2) - exp(-x))
+pprint(limit(expr, x, oo))
