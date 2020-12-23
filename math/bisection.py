@@ -1,9 +1,10 @@
 import math
 
 def f(x):
-    return x*math.exp(x) - 5
+    return x - 5
 
 def bisection(f, a, b, prec):#, iter=0):
+    m = 0
     while ((b - a) / 2 > prec):
         m = (a + b) / 2
         if f(m) == 0:
@@ -14,4 +15,4 @@ def bisection(f, a, b, prec):#, iter=0):
             a = m
     return m
 
-print(bisection(f, 1, 2, 0.001))
+print(bisection(f, 1, 6, 0.000000001))

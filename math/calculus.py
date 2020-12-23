@@ -9,8 +9,13 @@ f, g, N = symbols('f g N', cls=Function)
 # an = cos(n) * sin(1/n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
 # expr = Sum(an, (n,1,oo))
 # pprint(expr.is_absolutely_convergent())
-# expr = x * log(x) * exp(x)
-# pprint(integrate(expr, x))
+expr = sqrt(x) * sin(sqrt(x))
+expr2 = 2 * t**2 * sin(t)
+i1 = integrate(expr, (x, 0, sqrt(pi/2)))
+i2 = integrate(expr2, (t, 0, sqrt(sqrt(pi/2))))
+
+pprint(i1)
+pprint(i2)
 
 # expr = log(abs(exp(2 * x) * (1 - exp(2 - 2 * x)))) - 2 * x
 # pprint(limit(expr, x, oo))
@@ -63,6 +68,6 @@ f, g, N = symbols('f g N', cls=Function)
 # expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
 # pprint(simplify(expr.diff(x,2)))
 
-a = 0
-expr = (log(x + 3) - log(x + 1) - sin(2 / x)) / (cos(sin(1 / (2 * x))) - exp(a / x**2) - exp(-x))
-pprint(limit(expr, x, oo))
+# a = 0
+# expr = (log(x + 3) - log(x + 1) - sin(2 / x)) / (cos(sin(1 / (2 * x))) - exp(a / x**2) - exp(-x))
+# pprint(limit(expr, x, oo))
