@@ -4,19 +4,11 @@ x, y, z, t, k = symbols('x y z t k', real=True)
 n = symbols('n', integer=True)
 f, g, N = symbols('f g N', cls=Function)
 
-# expr = (x**2 - 4 * x) * exp(-1/(x**2 - 4 * x))
-# pprint(limit(expr/x**2, x, oo))
+# expr = (1 - cos(x**2)) / (x * (x - sin(x)) - x**3 * (sin(x))**2)
+# pprint(limit(expr, x, 0))
 # an = cos(n) * sin(1/n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
 # expr = Sum(an, (n,1,oo))
 # pprint(expr.is_absolutely_convergent())
-expr = sqrt(x) * sin(sqrt(x))
-expr2 = 2 * t**2 * sin(t)
-i1 = integrate(expr, (x, 0, sqrt(pi/2)))
-i2 = integrate(expr2, (t, 0, sqrt(sqrt(pi/2))))
-
-pprint(i1)
-pprint(i2)
-
 # expr = log(abs(exp(2 * x) * (1 - exp(2 - 2 * x)))) - 2 * x
 # pprint(limit(expr, x, oo))
 # an = n**(1/3) / (sqrt(n**2 + n + 1))
