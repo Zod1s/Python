@@ -19,6 +19,9 @@ f, g, N = symbols('f g N', cls=Function)
 # expr = log(1 + sin(x))
 # pprint(series(expr, x, 0, 4))
 
+expr = sin(x**2)
+pprint(integrate(expr, (x,0,sqrt(pi/2))))
+
 # expr1 = 1 / abs(sin(x)) - 1 / abs(log(1 + sqrt(abs(x))))
 # expr2 = exp(1 / abs(x)) + log(abs(x)) / x**3
 # expr3 = (exp(sin(x)) - 1 - sin(x)) / ((tan(x))**2 * (sinh(x) - x))

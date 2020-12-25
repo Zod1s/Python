@@ -14,7 +14,7 @@ def intersection(a: Point, b: Point, plane: str) -> Point:
     z = plane
     A = a
     B = b
-      
+
     v = np.subtract(B, A) #direction of the line
 
     coefficient_matrix = np.array(
