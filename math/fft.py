@@ -1,21 +1,16 @@
-import scipy.fftpack
 import numpy as np
-import matplotlib.pyplot as plt
 
-def f(t):
-    return np.sin(2*np.pi*t)
+def fft(xs):
+    N = len(xs)
+    coeffs = [np.exp(-1j * 2 * np.pi * n / N) for n in range(N)]
+    Xk = [xs[i] * coeffs[k]**k for k in range(N) for i in range(N)]
+    return Xk
 
-N = 700
-T = 1 / 250
-F = 1 / T
+def func(x):
+    return np.sin(2 * np.pi * x)
 
-xs = np.linspace(0.0, N*T, N)
-ys = f(xs)
-noise = np.random.normal(0, 1, ys.shape)
-dist = ys + noise
+xs = np.linspace(0, 1, 50)
+ys = list(map(func, xs))
+ffts = fft(ys)
 
-fft = scipy.fftpack.fft(dist)
-xf = np.linspace(0.0, F/2, N/2)
-
-plt.plot(xf, 2.0/N * np.abs(fft[:N//2]))
-plt.show()
+print(list(map(abs, ffts)))
