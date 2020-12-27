@@ -4,12 +4,12 @@ x, y, z, t, k = symbols('x y z t k', real=True)
 n = symbols('n', integer=True)
 f, g, N = symbols('f g N', cls=Function)
 
-# expr = (1 - cos(x**2)) / (x * (x - sin(x)) - x**3 * (sin(x))**2)
-# pprint(limit(expr, x, 0))
+expr = x**(2 / 3) * ((x + 1) ** (1 / 3) - x**(1 / 3))
+pprint(limit(expr, x, oo))
 # an = cos(n) * sin(1/n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
 # expr = Sum(an, (n,1,oo))
 # pprint(expr.is_absolutely_convergent())
-# expr = log(abs(exp(2 * x) * (1 - exp(2 - 2 * x)))) - 2 * x
+# expr = x * (3 ** ((2 * x + 1) / (x**2 + 1)) - 1)
 # pprint(limit(expr, x, oo))
 # an = n**(1/3) / (sqrt(n**2 + n + 1))
 # expr = Sum(an, (n,1,oo))
@@ -19,8 +19,9 @@ f, g, N = symbols('f g N', cls=Function)
 # expr = log(1 + sin(x))
 # pprint(series(expr, x, 0, 4))
 
-expr = sin(x**2)
-pprint(integrate(expr, (x,0,sqrt(pi/2))))
+# expr = 1 / (x**4 + 4 * x**2 + 4)
+# expr = sqrt(2) * tan(x)
+# pprint(expr.diff())
 
 # expr1 = 1 / abs(sin(x)) - 1 / abs(log(1 + sqrt(abs(x))))
 # expr2 = exp(1 / abs(x)) + log(abs(x)) / x**3

@@ -1,16 +1,29 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import scipy.fftpack
 
 def fft(xs):
     N = len(xs)
     coeffs = [np.exp(-1j * 2 * np.pi * n / N) for n in range(N)]
-    Xk = [xs[i] * coeffs[k]**k for k in range(N) for i in range(N)]
+    Xk = [sum((xs[n] * coeffs[(k * n) % N] for n in range(N))) for k in range(N)]
     return Xk
 
 def func(x):
-    return np.sin(2 * np.pi * x)
+    return np.sin(2 * np.pi * x) + np.sin(2 * np.pi * 5 * x)
 
-xs = np.linspace(0, 1, 50)
-ys = list(map(func, xs))
-ffts = fft(ys)
+number_of_samples = 500
+samples_freq = 1 / 80
 
-print(list(map(abs, ffts)))
+xs = np.linspace(0.0, samples_freq * number_of_samples, number_of_samples)
+ys = func(xs)
+ffts = np.abs(fft(ys))
+xffts = np.linspace(0, 1 / (2 * samples_freq), number_of_samples//2)
+
+m = max(ffts)
+i = [x for (x, y) in enumerate(ffts) if y == m]
+
+# ffts = np.abs(scipy.fftpack.fft(ys))
+plt.plot(xs, ys)
+plt.plot(xffts, ffts[:number_of_samples//2])
+
+plt.show()
