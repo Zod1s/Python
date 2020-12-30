@@ -1,11 +1,12 @@
 from sympy import *
 init_printing(use_unicode=True)
-x, y, z, t, k = symbols('x y z t k', real=True)
+x, y, t, k = symbols('x y t k', real=True)
+z = symbols('z', complex=True)
 n = symbols('n', integer=True)
 f, g, N = symbols('f g N', cls=Function)
 
-expr = x**(2 / 3) * ((x + 1) ** (1 / 3) - x**(1 / 3))
-pprint(limit(expr, x, oo))
+# expr = (1 - cosh(x))**2 / (sin(x) * (x - atan(x)) + x**3 * (sinh(x))**2)
+# pprint(limit(expr, x, 0))
 # an = cos(n) * sin(1/n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
 # expr = Sum(an, (n,1,oo))
 # pprint(expr.is_absolutely_convergent())
@@ -52,8 +53,8 @@ pprint(limit(expr, x, oo))
 # expr = x**2 + 3 * x - I
 # pprint(solveset(expr, x))
 
-# x = sqrt(8) * (cos(pi/4) + I * sin(pi/4))
-# pprint(solveset(z**3 - x, z))
+# expr = (z**2 + 2 * I) * (z**3 + 8)
+# pprint(solveset(expr, z))
 # x = root(8, 6) * (cos(2 * 2 * pi / 3 + pi / 12) + I * sin(2 * 2 * pi / 3 + pi / 12))
 # pprint(simplify(x))
 # pprint(Abs(x - I)**2)
@@ -67,3 +68,7 @@ pprint(limit(expr, x, oo))
 # a = 0
 # expr = (log(x + 3) - log(x + 1) - sin(2 / x)) / (cos(sin(1 / (2 * x))) - exp(a / x**2) - exp(-x))
 # pprint(limit(expr, x, oo))
+
+a = -2
+expr = (4 - x**2) ** a
+pprint(integrate(expr, (x, 0, 2)))
