@@ -68,7 +68,3 @@ f, g, N = symbols('f g N', cls=Function)
 # a = 0
 # expr = (log(x + 3) - log(x + 1) - sin(2 / x)) / (cos(sin(1 / (2 * x))) - exp(a / x**2) - exp(-x))
 # pprint(limit(expr, x, oo))
-
-a = -2
-expr = (4 - x**2) ** a
-pprint(integrate(expr, (x, 0, 2)))
