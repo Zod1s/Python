@@ -53,8 +53,8 @@ f, g, N = symbols('f g N', cls=Function)
 # expr = x**2 + 3 * x - I
 # pprint(solveset(expr, x))
 
-# expr = (z**2 + 2 * I) * (z**3 + 8)
-# pprint(solveset(expr, z))
+# expr = (9 * x + 1) ** 2 - (x + 3)
+# pprint(solveset(expr, x))
 # x = root(8, 6) * (cos(2 * 2 * pi / 3 + pi / 12) + I * sin(2 * 2 * pi / 3 + pi / 12))
 # pprint(simplify(x))
 # pprint(Abs(x - I)**2)
@@ -69,5 +69,9 @@ f, g, N = symbols('f g N', cls=Function)
 # expr = (log(x + 3) - log(x + 1) - sin(2 / x)) / (cos(sin(1 / (2 * x))) - exp(a / x**2) - exp(-x))
 # pprint(limit(expr, x, oo))
 
-expr = (x**6 + x**4 + x**2 + 2) / (x**4 + 1)
-pprint(integrate(expr, (x, 0, 1)))
+# expr = 1 / (x * log(x)**2)
+# pprint(integrate(expr, (x, 0, 1/2)))
+
+a = -1
+expr = (1 + 3 * a / n) ** (n**2)
+pprint(Sum(expr, (n, 1, oo)).is_convergent())
