@@ -5,7 +5,8 @@ z = symbols('z', complex=True)
 n = symbols('n', integer=True)
 f, g, N = symbols('f g N', cls=Function)
 
-# expr = (1 - cosh(x))**2 / (sin(x) * (x - atan(x)) + x**3 * (sinh(x))**2)
+# a = 4
+# expr = ((4 * cos(x) - a)**2 - 4 * x**4) / (x**4 * sin(x)**2)
 # pprint(limit(expr, x, 0))
 # an = cos(n) * sin(1/n)# log(1 + sin(1/n)**2) - (exp(1/n) - 1) * sin(1/n) # + 1 / (2 * n**4)
 # expr = Sum(an, (n,1,oo))
@@ -66,12 +67,5 @@ f, g, N = symbols('f g N', cls=Function)
 # pprint(simplify(expr.diff(x,2)))
 
 # a = 0
-# expr = (log(x + 3) - log(x + 1) - sin(2 / x)) / (cos(sin(1 / (2 * x))) - exp(a / x**2) - exp(-x))
-# pprint(limit(expr, x, oo))
-
-# expr = 1 / (x * log(x)**2)
-# pprint(integrate(expr, (x, 0, 1/2)))
-
-a = -1
-expr = (1 + 3 * a / n) ** (n**2)
-pprint(Sum(expr, (n, 1, oo)).is_convergent())
+expr = (sqrt(sqrt(x) - 1) - sqrt(x - 2)) / log(x)
+pprint(limit(expr, x, oo))
