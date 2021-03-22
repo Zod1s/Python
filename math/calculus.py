@@ -65,7 +65,6 @@ f, g, N = symbols('f g N', cls=Function)
 # expr = (1 - x) * exp(atan(4/x))
 # expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
 # pprint(simplify(expr.diff(x,2)))
-
-# a = 0
-expr = (sqrt(sqrt(x) - 1) - sqrt(x - 2)) / log(x)
-pprint(limit(expr, x, oo))
+ 
+expr = tan(x) * exp(-x**2)
+pprint(integrate(expr, x))
