@@ -1,9 +1,32 @@
 from sympy import *
+from sympy.solvers.ode.systems import dsolve_system
 init_printing(use_unicode=True)
+
 x, y, t, k = symbols('x y t k', real=True)
 z = symbols('z', complex=True)
 n = symbols('n', integer=True)
+alpha, beta, gamma = symbols('alpha beta gamma', real=True)
 f, g, N = symbols('f g N', cls=Function)
+S, I, R = symbols('S I R', cls=Function)
+
+expr = (x**(3 * alpha) - 1 + (cos(x))**(x**alpha)) / (x**(2 + alpha))
+pprint(expr)
+pprint(limit(expr.subs(alpha, 1.0), x, 0, '+'))
+
+# eq1 = Eq(S(t).diff(t), -beta * I(t) * S(t))
+# eq2 = Eq(I(t).diff(t), beta * I(t) * S(t) - gamma * I(t))
+# eq3 = Eq(R(t).diff(t), gamma * I(t))
+
+# pprint(eq1)
+# pprint(eq2)
+# pprint(eq3)
+
+# eq1.subs([(beta, 1), (gamma, 1)])
+# eq2.subs([(beta, 1), (gamma, 1)])
+# eq3.subs([(beta, 1), (gamma, 1)])
+
+# solutions = dsolve_system([eq1, eq2, eq3])
+# pprint(solutions)
 
 # a = 4
 # expr = ((4 * cos(x) - a)**2 - 4 * x**4) / (x**4 * sin(x)**2)
@@ -66,5 +89,5 @@ f, g, N = symbols('f g N', cls=Function)
 # expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
 # pprint(simplify(expr.diff(x,2)))
  
-expr = tan(x) * exp(-x**2)
-pprint(integrate(expr, x))
+# expr = 1/3 * sqrt((x**2 + 2)**3)
+# pprint(expr.diff())
