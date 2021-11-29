@@ -7,11 +7,16 @@ z = symbols('z', complex=True)
 n = symbols('n', integer=True)
 alpha, beta, gamma = symbols('alpha beta gamma', real=True)
 f, g, N = symbols('f g N', cls=Function)
-S, I, R = symbols('S I R', cls=Function)
 
-expr = (x**(3 * alpha) - 1 + (cos(x))**(x**alpha)) / (x**(2 + alpha))
-pprint(expr)
-pprint(limit(expr.subs(alpha, 1.0), x, 0, '+'))
+# expr = (x**(3 * alpha) - 1 + (cos(x))**(x**alpha)) / (x**(2 + alpha))
+# pprint(expr)
+# pprint(limit(expr.subs(alpha, 1.0), x, 0, '+'))
+
+expr = 1 / (x * (1 - x))
+pprint(integrate(expr, x))
+
+# expr = atan(x)
+# pprint(expr.diff(x))
 
 # eq1 = Eq(S(t).diff(t), -beta * I(t) * S(t))
 # eq2 = Eq(I(t).diff(t), beta * I(t) * S(t) - gamma * I(t))
