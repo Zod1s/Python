@@ -30,7 +30,8 @@ with open(path) as f:
 time_step = 3
 time = [time_step * _ for _ in range(len(sensor0))]
 
-fig, ((gr0, gr1), (gr2, gr3), (gr4, gr5)) = plt.subplots(nrows=3, ncols=2, sharex=True, constrained_layout=True)
+fig, ((gr0, gr1), (gr2, gr3), (gr4, gr5)) = plt.subplots(
+    nrows=3, ncols=2, sharex=True, constrained_layout=True)
 fig.suptitle("sensori")
 
 gr0.set(ylabel="valore(s0)")

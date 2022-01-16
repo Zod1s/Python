@@ -1,47 +1,50 @@
 import matplotlib.pyplot as plt
 
-plt.style.use("bmh") #setta lo stile dei grafici
+plt.style.use("bmh")  # setta lo stile dei grafici
 
-VAL_LEN = 3 # numero dei valori su cui fa la media
+VAL_LEN = 3  # numero dei valori su cui fa la media
 
-path = "" # path del file .txt dove sono salvati i valori
-text = "" # stringa per contenere il file
-values = [] # array per i valori letti
+path = ""  # path del file .txt dove sono salvati i valori
+text = ""  # stringa per contenere il file
+values = []  # array per i valori letti
 
 with open(path) as f:
     for line in f:
-        text += str(line)    # prende i valori dal file e li mette in un'unica variabile
+        # prende i valori dal file e li mette in un'unica variabile
+        text += str(line)
 
-    text = text.splitlines() # elimina tutti i \n presenti nella stringa. text passa da 
-                             # essere str a essere list
+    text = text.splitlines()  # elimina tutti i \n presenti nella stringa. text passa da
+    # essere str a essere list
 
     for element in text:
-        values.append(int(element.split(", ")[1])) # prende il valore letto, scartando il valore 
-                                                   # del tempo in cui è stato letto
+        # prende il valore letto, scartando il valore
+        values.append(int(element.split(", ")[1]))
+        # del tempo in cui è stato letto
 
 time_step = 3
-samples  = len(values)
-time = [time_step * _ for _ in range(samples)] # genera una lista da 0 a time_step * samples 
-                                               # con incremento di time_step ogni volta
+samples = len(values)
+# genera una lista da 0 a time_step * samples
+time = [time_step * _ for _ in range(samples)]
+# con incremento di time_step ogni volta
 
 fig, (gr1, gr2) = plt.subplots(nrows=2, ncols=1, constrained_layout=True)
 
 fig.suptitle("grafici")
 
-sensors_values = [0 for _ in range(VAL_LEN)] # genera una lista di VAL_LEN zeri
+sensors_values = [0 for _ in range(VAL_LEN)]  # genera una lista di VAL_LEN zeri
 sensor_mean = []
 index = 0
 
 for item in values:
     sensors_values[index] = item
 
-    mean = 0 # media dei valori salvati
+    mean = 0  # media dei valori salvati
     for value in sensors_values:
         mean += value
-    
+
     mean /= len(sensors_values)
 
-    sensor_mean.append(mean) # fa la media degli ultimi VAL_LEN valori salvati
+    sensor_mean.append(mean)  # fa la media degli ultimi VAL_LEN valori salvati
 
     index = (index + 1) % VAL_LEN
 

@@ -1,19 +1,24 @@
 from sympy import *
-from sympy.solvers.ode.systems import dsolve_system
+# from sympy.solvers.ode.systems import dsolve_system
 init_printing(use_unicode=True)
 
 x, y, t, k = symbols('x y t k', real=True)
 z = symbols('z', complex=True)
 n = symbols('n', integer=True)
 alpha, beta, gamma = symbols('alpha beta gamma', real=True)
-f, g, N = symbols('f g N', cls=Function)
+f, g, N, u = symbols('f g N u', cls=Function)
 
+C = Curve([cos(t), sin(t)], (t, 0, pi/2))
+pprint(line_integrate(1, C, [x, y]))
+
+# expr = u(t).diff(t, t) - 4 * u(t) - 4 * exp(-2 * t)
+# pprint(dsolve(expr, 0, ics={u(0):-1, u(t).diff(t).subs(t, 0):1}))
 # expr = (x**(3 * alpha) - 1 + (cos(x))**(x**alpha)) / (x**(2 + alpha))
 # pprint(expr)
 # pprint(limit(expr.subs(alpha, 1.0), x, 0, '+'))
 
-expr = 1 / (x * (1 - x))
-pprint(integrate(expr, x))
+# expr = 1 / (x * (1 - x))
+# pprint(integrate(expr, x))
 
 # expr = atan(x)
 # pprint(expr.diff(x))
@@ -93,6 +98,6 @@ pprint(integrate(expr, x))
 # expr = (1 - x) * exp(atan(4/x))
 # expr2 = log(abs(1/sin(x) - cos(x)/sin(x)))
 # pprint(simplify(expr.diff(x,2)))
- 
+
 # expr = 1/3 * sqrt((x**2 + 2)**3)
 # pprint(expr.diff())

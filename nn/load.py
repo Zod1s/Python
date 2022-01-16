@@ -37,11 +37,11 @@
 # _,acc = trainedModel.evaluate(x_test, y_test, verbose=2)
 # print("Restored model, accuracy: {:5.2f}%".format(100*acc))
 
+from tensorflow.keras.datasets import mnist
 import tensorflow as tf
 
 new_model = tf.keras.models.load_model('.\\models\\my_model.h5')
 
-from tensorflow.keras.datasets import mnist
 
 _, (x_test, y_test) = mnist.load_data()
 
@@ -50,4 +50,4 @@ x_test = x_test.reshape(10000, 784).astype('float32') / 255
 y_test = y_test.astype('float32')
 
 _, acc = new_model.evaluate(x_test, y_test, verbose=2)
-print("Restored model, accuracy: {:5.2f}%".format(100*acc))
+print("Restored model, accuracy: {:5.2f}%".format(100 * acc))

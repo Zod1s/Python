@@ -12,8 +12,8 @@ l = 1
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 
-x, y, z = map(lambda x: np.around(x, decimals=2),
-              np.meshgrid(np.arange(- 2 * l, 2 * l + 0.01, 0.4), np.arange(- 2 * l, 2 * l + 0.01, 0.4), np.arange(- 2 * l, 2 * l + 0.01, 0.4)))
+x, y, z = map(lambda x: np.around(x, decimals=2), np.meshgrid(np.arange(- 2 * l, 2 * l +
+                                                                        0.01, 0.4), np.arange(- 2 * l, 2 * l + 0.01, 0.4), np.arange(- 2 * l, 2 * l + 0.01, 0.4)))
 
 u = E0 * (a * x**3 + b * x)
 v = E0 * (b * y)**2

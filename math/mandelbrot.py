@@ -3,8 +3,10 @@ import cmath
 import math
 import pygame.surfarray as surfarray
 
+
 def map_value(x, in_min, in_max, out_min, out_max):
     return (x - in_min) * (out_max - out_min) // (in_max - in_min) + out_min
+
 
 def f(c):
     z = 0
@@ -17,10 +19,11 @@ def f(c):
             break
     return n
 
+
 pygame.init()
 
 WHITE = (255, 255, 255)
-BLACK = (  0,   0,   0)
+BLACK = (0, 0, 0)
 EXA_WHITE = 0xFFFFFF
 EXA_BLACK = 0x000000
 MAX_ATTEMPTS = 100
@@ -49,9 +52,9 @@ pygame.display.flip()
 done = False
 
 while not done:
-    for event in pygame.event.get(): 
-        if event.type == pygame.QUIT: 
-            done = True 
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:
                 done = True

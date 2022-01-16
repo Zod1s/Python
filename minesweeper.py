@@ -3,6 +3,7 @@ import re
 import time
 from string import ascii_lowercase
 
+
 def setupgrid(gridsize, start, numberofmines):
     emptygrid = [['0' for i in range(gridsize)] for i in range(gridsize)]
 
@@ -203,9 +204,8 @@ def playgame():
             if set(flags) == set(mines):
                 minutes, seconds = divmod(int(time.time() - starttime), 60)
                 print(
-                    'You Win. '
-                    'It took you {} minutes and {} seconds.\n'.format(minutes,
-                                                                      seconds))
+                    'You Win. It took you {} minutes and {} seconds.\n'.format(
+                        minutes, seconds))
                 showgrid(grid)
                 if playagain():
                     playgame()
@@ -213,5 +213,6 @@ def playgame():
 
         showgrid(currgrid)
         print(message)
+
 
 playgame()

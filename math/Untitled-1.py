@@ -12,18 +12,21 @@ polygon_item = c.create_polygon(xy)
 
 center = 100, 100
 
+
 def getangle(event):
     dx = c.canvasx(event.x) - center[0]
     dy = c.canvasy(event.y) - center[1]
     try:
         return complex(dx, dy) / abs(complex(dx, dy))
     except ZeroDivisionError:
-        return 0.0 # cannot determine angle
+        return 0.0  # cannot determine angle
+
 
 def press(event):
     # calculate angle at start point
     global start
     start = getangle(event)
+
 
 def motion(event):
     # calculate current angle relative to initial angle
@@ -36,6 +39,7 @@ def motion(event):
         newxy.append(v.real)
         newxy.append(v.imag)
     c.coords(polygon_item, *newxy)
+
 
 c.bind("<Button-1>", press)
 c.bind("<B1-Motion>", motion)
