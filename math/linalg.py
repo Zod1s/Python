@@ -1,11 +1,14 @@
 import numpy as np
-import scipy.linalg as linalg
 
-vec1 = np.array([2, -2, -1, 1])
-vec2 = np.array([3, 0, 2, 1])
-vec3 = np.array([3, -2, 2, 2])
-vec4 = np.array([3, 2, 2, 0])
+A = np.array(
+    [
+        [ 0.3,   -0.2,      0,      0],
+        [-0.2,  1.325, -0.125,     -1],
+        [   0, -0.125,    0.5, -0.125],
+        [   0,     -1, -0.125,  1.625]
+    ]
+)
 
-mat = np.stack([vec1, vec2, vec3, vec4])
+b = np.array([3, -3, 0, 6])
 
-print(linalg.det(mat))
+print(np.linalg.solve(A, b))
