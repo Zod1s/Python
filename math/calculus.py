@@ -5,11 +5,24 @@ init_printing(use_unicode=True)
 x, y, t, k = symbols('x y t k', real=True)
 z = symbols('z', complex=True)
 n = symbols('n', integer=True)
+s = symbols('s', complex=True)
 alpha, beta, gamma = symbols('alpha beta gamma', real=True)
-f, g, N, u = symbols('f g N u', cls=Function)
+f,g, N, u = symbols('f g N u', cls=Function)
 
-C = Curve([cos(t), sin(t)], (t, 0, pi/2))
-pprint(line_integrate(1, C, [x, y]))
+G = (10 * s + 1) / (s**2 * (s - 1)**2)
+W = G / (1 + G)
+pprint(G)
+pprint(simplify(expand(W)))
+
+
+# expr = (x + 1) / (x**2 + 0.2 * x + 1)
+# pprint(simplify(expr.diff(x, x)))
+
+# expr = 7 / (4 * (x + 4)**2 * (x - 3)) - 3 / (4 * x * (x + 4) * (x - 3))
+# pprint(factor(simplify(expr)))
+
+# C = Curve([cos(t), sin(t)], (t, 0, pi/2))
+# pprint(line_integrate(1, C, [x, y]))
 
 # expr = u(t).diff(t, t) - 4 * u(t) - 4 * exp(-2 * t)
 # pprint(dsolve(expr, 0, ics={u(0):-1, u(t).diff(t).subs(t, 0):1}))
