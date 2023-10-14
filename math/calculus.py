@@ -7,13 +7,47 @@ z = symbols('z', complex=True)
 n = symbols('n', integer=True)
 s = symbols('s', complex=True)
 alpha, beta, gamma = symbols('alpha beta gamma', real=True)
-f,g, N, u = symbols('f g N u', cls=Function)
+f, g, N, u = symbols('f g N u', cls=Function)
 
-G = (10 * s + 1) / (s**2 * (s - 1)**2)
-W = G / (1 + G)
+m, ks, k1, k2, b, L, r = symbols('m ks k1 k2 b L r', real=True)
+
+F = Matrix([
+    [0, 1, 0],
+    [-ks / m, -b / m, -sqrt(k1 * ks * L) / (m * k1)],
+    [-r * sqrt(k1 * ks * L) / k1, 0, -r * (2 * k2 + L) / (2 * k1)]
+])
+G = Matrix([0, 0, 1])
+H = Matrix([[1, 0, 0]])
+pprint(F)
 pprint(G)
-pprint(simplify(expand(W)))
+pprint(H)
 
+sIF = s * eye(3) - F
+pprint(sIF)
+pprint(simplify(expand(sIF.det())))
+# pprint(sIF**-1)
+
+Gs = simplify(H * (sIF**-1) * G)
+
+pprint(Gs)
+pprint(expand(Gs.subs(
+    [(m, 0.27), (ks, 158e3), (k1, 29.92e-6),
+     (k2, 4e-5), (b, 7.53), (L, 4e-3), (r, 6)]
+)))
+
+# k1 = 0.021
+# m1 = -34.459
+# s1 = 130.2474
+# o1 = 725.088
+
+# k2 = -1.021
+# m2 = -140.258
+# s2 = 88.2425
+# o2 = 10.8237
+
+# w1 = 1 + exp(-s1 * x) * (k1 * cos(o1 * x) + (m1 - k1 * s1) / o1 * sin(o1 * x)) + \
+#     exp(-s2 * x) * (k2 * cos(o2 * x) + (m2 - k2 * s2) / o2 * sin(o2 * x))
+# pprint(w1)
 
 # expr = (x + 1) / (x**2 + 0.2 * x + 1)
 # pprint(simplify(expr.diff(x, x)))

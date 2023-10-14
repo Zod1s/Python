@@ -6,25 +6,20 @@ from string import ascii_lowercase
 
 def setupgrid(gridsize, start, numberofmines):
     emptygrid = [['0' for i in range(gridsize)] for i in range(gridsize)]
-
     mines = getmines(emptygrid, start, numberofmines)
-
     for i, j in mines:
         emptygrid[i][j] = 'X'
 
     grid = getnumbers(emptygrid)
-
     return (grid, mines)
 
 
 def showgrid(grid):
     gridsize = len(grid)
-
     horizontal = '   ' + (4 * gridsize * '-') + '-'
 
     # Print top column letters
     toplabel = '     '
-
     for i in ascii_lowercase[:gridsize]:
         toplabel = toplabel + i + '   '
 
@@ -33,10 +28,8 @@ def showgrid(grid):
     # Print left row numbers
     for idx, i in enumerate(grid):
         row = '{0:2} |'.format(idx + 1)
-
         for j in i:
             row = row + ' ' + j + ' |'
-
         print(row + '\n' + horizontal)
 
     print('')
@@ -44,10 +37,8 @@ def showgrid(grid):
 
 def getrandomcell(grid):
     gridsize = len(grid)
-
     a = random.randint(0, gridsize - 1)
     b = random.randint(0, gridsize - 1)
-
     return (a, b)
 
 
@@ -69,7 +60,7 @@ def getmines(grid, start, numberofmines):
     mines = []
     neighbors = getneighbors(grid, *start)
 
-    for i in range(numberofmines):
+    for _ in range(numberofmines):
         cell = getrandomcell(grid)
         while cell == start or cell in mines or cell in neighbors:
             cell = getrandomcell(grid)
@@ -85,7 +76,6 @@ def getnumbers(grid):
                 # Gets the values of the neighbors
                 values = [grid[r][c] for r, c in getneighbors(grid,
                                                               rowno, colno)]
-
                 # Counts how many are mines
                 grid[rowno][colno] = str(values.count('X'))
 
